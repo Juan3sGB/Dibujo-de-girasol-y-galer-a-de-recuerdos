@@ -1,0 +1,3184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Una historia especial 🌻</title>
+
+
+<style>
+
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    background:#fff9df;
+
+    color:#49340c;
+}
+
+button,
+input,
+textarea{
+    font-family:inherit;
+}
+
+
+
+.pagina{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100vw;
+    height:100vh;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:
+        translateX(100%)
+        scale(.97);
+
+    transition:
+        transform 1.25s cubic-bezier(.77,0,.18,1),
+        opacity .9s ease;
+
+    z-index:1;
+
+    overflow:hidden;
+}
+
+
+.pagina.activa{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+    transform:
+        translateX(0)
+        scale(1);
+
+    z-index:10;
+}
+
+
+.pagina.saliendo{
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:
+        translateX(-100%)
+        scale(.94);
+
+    z-index:5;
+}
+
+
+.decoracion{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:0;
+}
+
+
+.florDecor{
+
+    position:absolute;
+
+    font-size:55px;
+
+    opacity:.17;
+
+    filter:
+        drop-shadow(
+            0 4px 5px
+            rgba(100,70,0,.12)
+        );
+
+    animation:
+        flotarFlor 6s ease-in-out infinite;
+}
+
+
+.florDecor:nth-child(1){
+    left:5%;
+    top:7%;
+}
+
+
+.florDecor:nth-child(2){
+    right:6%;
+    top:12%;
+    animation-delay:1.2s;
+}
+
+
+.florDecor:nth-child(3){
+    left:8%;
+    bottom:9%;
+    animation-delay:2s;
+}
+
+
+.florDecor:nth-child(4){
+    right:9%;
+    bottom:10%;
+    animation-delay:3s;
+}
+
+
+@keyframes flotarFlor{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50%{
+        transform:
+            translateY(-17px)
+            rotate(6deg);
+    }
+}
+
+
+#pagina1{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #fffef2 0%,
+            #fff2b3 58%,
+            #e1b932 100%
+        );
+}
+
+
+.titulo1{
+
+    position:absolute;
+
+    top:7%;
+
+    text-align:center;
+
+    font-size:
+        clamp(28px,5vw,48px);
+
+    color:#735200;
+
+    animation:
+        aparecer 1.3s ease;
+}
+
+
+.subtitulo1{
+
+    position:absolute;
+
+    top:16%;
+
+    font-size:18px;
+
+    color:#725c28;
+
+    opacity:.8;
+}
+
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(-25px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+
+.sobre{
+
+    position:relative;
+
+    width:min(86vw,440px);
+
+    height:285px;
+
+    perspective:1200px;
+
+    cursor:pointer;
+
+    z-index:3;
+}
+
+
+.cuerpoSobre{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#fffdf2;
+
+    border:
+        2px solid #d2a719;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 25px 55px
+        rgba(0,0,0,.25);
+
+    overflow:hidden;
+}
+
+
+.cuerpoSobre::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    border-left:
+        220px solid transparent;
+
+    border-right:
+        220px solid transparent;
+
+    border-bottom:
+        145px solid #efd675;
+}
+
+
+.papel{
+
+    position:absolute;
+
+    z-index:3;
+
+    width:82%;
+    height:70%;
+
+    top:15%;
+    left:9%;
+
+    padding:25px;
+
+    text-align:center;
+
+    background:#fffef8;
+
+    border:
+        1px solid #d4bf72;
+
+    box-shadow:
+        0 5px 16px
+        rgba(0,0,0,.12);
+
+    transition:
+        transform 1.5s
+        cubic-bezier(.4,1.4,.4,1);
+}
+
+
+.papel h2{
+
+    margin-bottom:14px;
+
+    color:#735200;
+}
+
+
+
+.tapa{
+
+    position:absolute;
+
+    z-index:6;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:55%;
+
+    background:#e7c657;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin:
+        top center;
+
+    transition:
+        transform 1.3s
+        cubic-bezier(.68,-.55,.27,1.55);
+}
+
+
+.sobre.abierta .tapa{
+
+    transform:
+        rotateX(180deg);
+}
+
+
+.sobre.abierta .papel{
+
+    transform:
+        translateY(-105px)
+        scale(1.08);
+}
+
+
+
+.botonCarta{
+
+    position:absolute;
+
+    bottom:8%;
+
+    padding:
+        14px 32px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#b98b00;
+
+    color:white;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,.2);
+
+    transition:.3s;
+
+    z-index:4;
+}
+
+
+.botonCarta:hover{
+
+    transform:
+        scale(1.07);
+
+    background:#957000;
+}
+
+
+
+#pagina2{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #fffef2 0%,
+            #f9e59a 58%,
+            #dfb52b 100%
+        );
+}
+
+
+
+.tituloGrafica{
+
+    position:absolute;
+
+    top:3.5%;
+
+    text-align:center;
+
+    color:#705000;
+
+    font-size:
+        clamp(24px,4vw,40px);
+
+    opacity:0;
+
+    z-index:5;
+}
+
+
+#pagina2.activa .tituloGrafica{
+
+    animation:
+        aparecer 1.2s ease
+        forwards .35s;
+}
+
+
+
+.subtituloGrafica{
+
+    position:absolute;
+
+    top:10%;
+
+    color:#725e2a;
+
+    font-size:14px;
+
+    opacity:0;
+
+    z-index:5;
+}
+
+
+#pagina2.activa .subtituloGrafica{
+
+    animation:
+        aparecer 1s ease
+        forwards .8s;
+}
+
+
+
+.panelMatematico{
+
+    position:absolute;
+
+    left:3%;
+
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    width:215px;
+
+    padding:14px 16px;
+
+    border-radius:18px;
+
+    background:
+        rgba(255,255,250,.82);
+
+    border:
+        1px solid rgba(170,130,20,.35);
+
+    box-shadow:
+        0 12px 25px
+        rgba(0,0,0,.1);
+
+    z-index:5;
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+}
+
+
+#pagina2.activa .panelMatematico{
+
+    animation:
+        aparecerSuave 1s ease
+        forwards 1.5s;
+}
+
+
+/* Solo cambia la opacidad. Se usa en vez de "aparecer" porque
+   esa también mueve el elemento (transform) y rompía el
+   centrado vertical del panel. */
+@keyframes aparecerSuave{
+
+    from{ opacity:0; }
+
+    to{ opacity:1; }
+}
+
+
+/* Puntito de color de la leyenda del panel */
+.panelMatematico .punto{
+
+    display:inline-block;
+
+    width:9px;
+    height:9px;
+
+    margin-right:6px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(0,0,0,.25);
+}
+
+
+/* Versión compacta de .ecuacion para que quepan las 6 ecuaciones */
+.ecuacion.mini{
+
+    padding:5px 6px;
+
+    margin:3px 0 7px;
+
+    font-size:12px;
+}
+
+
+.panelMatematico p{
+
+    margin-bottom:2px;
+
+    font-size:12px;
+}
+
+
+.panelMatematico h3{
+
+    margin-bottom:10px;
+
+    color:#765300;
+
+    font-size:17px;
+}
+
+
+.panelMatematico p{
+
+    margin-bottom:8px;
+
+    font-size:13px;
+
+    line-height:1.45;
+}
+
+
+.ecuacion{
+
+    padding:10px;
+
+    margin:8px 0;
+
+    text-align:center;
+
+    background:#fff8ca;
+
+    border-radius:10px;
+
+    color:#6b4c00;
+
+    font-size:14px;
+
+    font-style:italic;
+}
+
+
+
+.graficaContainer{
+
+    position:relative;
+
+    width:
+        min(82vw,760px);
+
+    height:
+        min(75vh,680px);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:2;
+}
+
+
+#grafica{
+
+    width:100%;
+    height:100%;
+
+    filter:
+        drop-shadow(
+            0 10px 15px
+            rgba(0,0,0,.12)
+        );
+}
+
+
+
+.estadoGrafica{
+
+    position:absolute;
+
+    bottom:9%;
+
+    min-width:260px;
+
+    text-align:center;
+
+    padding:
+        9px 18px;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.72);
+
+    color:#6d520d;
+
+    font-size:14px;
+
+    z-index:6;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,.08);
+}
+
+
+
+.botonContinuar{
+
+    position:absolute;
+
+    right:4%;
+
+    bottom:6%;
+
+    padding:
+        13px 26px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#806000;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+        transform .3s,
+        background .3s,
+        opacity .5s;
+
+    z-index:7;
+}
+
+
+.botonContinuar.visible{
+
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+
+.botonContinuar:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.04);
+
+    background:#a07800;
+}
+
+
+
+#pagina3{
+
+    display:block;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    padding:
+        45px 6% 80px;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            #fffce9,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fffef0,
+            #fff0a1
+        );
+}
+
+
+#luciernagas{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100vw;
+    height:100vh;
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+
+
+.contenido3{
+
+    position:relative;
+
+    z-index:3;
+
+    max-width:1120px;
+
+    margin:
+        0 auto;
+}
+
+
+.encabezado3{
+
+    text-align:center;
+
+    margin-bottom:30px;
+}
+
+
+.encabezado3 h2{
+
+    color:#725000;
+
+    font-size:
+        clamp(30px,5vw,46px);
+
+    margin-bottom:10px;
+}
+
+
+.encabezado3 p{
+
+    color:#655329;
+
+    font-size:16px;
+}
+
+
+.contador{
+
+    width:
+        min(95%,760px);
+
+    margin:
+        0 auto 40px;
+
+    padding:25px;
+
+    background:
+        rgba(255,255,250,.88);
+
+    border:
+        2px solid #d4b029;
+
+    border-radius:22px;
+
+    text-align:center;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.12);
+
+    backdrop-filter:
+        blur(3px);
+}
+
+
+.contador h3{
+
+    margin-bottom:12px;
+
+    color:#765300;
+
+    font-size:23px;
+}
+
+
+.contador label{
+
+    display:block;
+
+    margin-bottom:9px;
+
+    color:#5f4b1c;
+}
+
+
+#fechaInicio{
+
+    width:
+        min(100%,360px);
+
+    padding:11px;
+
+    border:
+        1px solid #c9a82e;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    background:#fffef6;
+
+    color:#503c0c;
+}
+
+
+#cronometro{
+
+    margin-top:18px;
+
+    color:#876200;
+
+    font-weight:bold;
+
+    font-size:
+        clamp(20px,4vw,34px);
+
+    line-height:1.5;
+}
+
+
+
+.galeria{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(240px,1fr)
+        );
+
+    gap:28px;
+}
+
+
+.tarjeta{
+
+    position:relative;
+
+    background:
+        rgba(255,255,250,.92);
+
+    padding:15px;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,.13);
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+
+.tarjeta:hover{
+
+    transform:
+        translateY(-7px)
+        rotate(.5deg);
+
+    box-shadow:
+        0 17px 30px
+        rgba(0,0,0,.17);
+}
+
+
+.foto{
+
+    height:250px;
+
+    border:
+        3px dashed #c9a82c;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff5bb,
+            #fffdf0
+        );
+
+    color:#94741c;
+
+    position:relative;
+}
+
+
+.foto img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+
+
+.subirFoto{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:12px;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        7px 13px;
+
+    border-radius:20px;
+
+    background:
+        rgba(90,65,0,.75);
+
+    color:white;
+
+    font-size:12px;
+
+    cursor:pointer;
+}
+
+
+.subirFoto input{
+
+    display:none;
+}
+
+
+.tarjeta h3{
+
+    margin:
+        15px 0 10px;
+
+    color:#755300;
+}
+
+
+.tarjeta textarea{
+
+    width:100%;
+
+    min-height:110px;
+
+    padding:12px;
+
+    resize:vertical;
+
+    border:
+        1px solid #d2bb60;
+
+    border-radius:10px;
+
+    background:#fffef8;
+
+    color:#4d3b13;
+
+    font-size:15px;
+
+    outline:none;
+}
+
+
+.tarjeta textarea:focus{
+
+    border-color:#b28b12;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(214,178,40,.16);
+}
+
+
+
+@media(max-width:850px){
+
+    .panelMatematico{
+
+        left:50%;
+
+        top:auto;
+
+        bottom:3%;
+
+        transform:
+            translateX(-50%);
+
+        width:
+            min(90%,430px);
+
+        padding:8px 12px;
+
+        display:none;
+    }
+
+    .estadoGrafica{
+        bottom:5%;
+    }
+
+    .botonContinuar{
+
+        right:50%;
+
+        transform:
+            translateX(50%);
+
+        bottom:1%;
+
+    }
+
+    .botonContinuar:hover{
+
+        transform:
+            translateX(50%)
+            translateY(-3px)
+            scale(1.04);
+    }
+
+    .graficaContainer{
+
+        width:95vw;
+
+        height:75vh;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .sobre{
+
+        width:86vw;
+
+        height:225px;
+    }
+
+    .cuerpoSobre::after{
+
+        border-left-width:43vw;
+        border-right-width:43vw;
+        border-bottom-width:115px;
+    }
+
+    .papel{
+
+        font-size:13px;
+    }
+
+    .titulo1{
+
+        top:5%;
+
+        padding:
+            0 20px;
+    }
+
+    .subtitulo1{
+
+        top:14%;
+    }
+
+    #pagina3{
+
+        padding:
+            35px 5% 70px;
+    }
+
+    .galeria{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+
+<section
+    id="pagina1"
+    class="pagina activa">
+
+
+    <div class="decoracion">
+
+        <div class="florDecor">🌼</div>
+        <div class="florDecor">🌻</div>
+        <div class="florDecor">🌼</div>
+        <div class="florDecor">🌻</div>
+
+    </div>
+
+
+    <h1 class="titulo1">
+        Una historia especial 🌻
+    </h1>
+
+
+    <p class="subtitulo1">
+        Abre la carta para comenzar
+    </p>
+
+
+    <div
+        class="sobre"
+        id="sobre"
+        onclick="abrirCarta()">
+
+
+        <div class="cuerpoSobre">
+
+
+            <div class="papel">
+
+                <h2>
+                    Para ti 💌
+                </h2>
+
+                <p>
+                    Aquí puedes escribir
+                    el mensaje que quieres
+                    que aparezca al principio.
+                </p>
+
+            </div>
+
+
+            <div class="tapa"></div>
+
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="botonCarta"
+        onclick="abrirCarta()">
+
+        Abrir carta 💌
+
+    </button>
+
+</section>
+
+
+
+<section
+    id="pagina2"
+    class="pagina">
+
+
+    <div class="decoracion">
+
+        <div class="florDecor">🌼</div>
+        <div class="florDecor">🌻</div>
+        <div class="florDecor">🌼</div>
+        <div class="florDecor">🌻</div>
+
+    </div>
+
+
+    <h1 class="tituloGrafica">
+
+        La flor nace de las matemáticas 🌻
+
+    </h1>
+
+
+    <p class="subtituloGrafica">
+
+        Cada curva, punto y línea participa
+        en la formación del girasol.
+
+    </p>
+
+
+    <!-- PANEL MATEMÁTICO -->
+
+    <!--
+        PANEL DE ECUACIONES
+        Lista las ecuaciones que construyen cada parte del
+        girasol. Cada "punto" de color coincide con el color
+        de esa parte en la gráfica. En pantallas pequeñas
+        (<850px) el panel se oculta desde el CSS.
+    -->
+
+    <aside class="panelMatematico">
+
+        <h3>
+            Ecuaciones
+        </h3>
+
+        <p><span class="punto" style="background:#2f9488"></span><strong>Tallo</strong> · −7.5 ≤ y ≤ 0</p>
+        <div class="ecuacion mini">x = 0.4 sin(0.8(y − 2))</div>
+
+        <p><span class="punto" style="background:#3aa296"></span><strong>Hojas</strong></p>
+        <div class="ecuacion mini">r = 2.0 cos(3(θ − α))</div>
+
+        <p><span class="punto" style="background:#e6b94a"></span><strong>Pétalos</strong></p>
+        <div class="ecuacion mini">r = 4.5 |cos(4θ)|</div>
+
+        <p><span class="punto" style="background:#f4d98a"></span><strong>Pétalos exteriores</strong></p>
+        <div class="ecuacion mini">r = 3.2 |sin(4θ)|</div>
+
+        <p><span class="punto" style="background:#5c3d52"></span><strong>Centro</strong></p>
+        <div class="ecuacion mini">x² + (y − 2)² = 1.2²</div>
+
+        <p><span class="punto" style="background:#dcc09a"></span><strong>Semillas</strong></p>
+        <div class="ecuacion mini">r = 0.12 √n, θ = n · 137.5°</div>
+
+    </aside>
+
+    <!-- GRÁFICA -->
+
+    <div class="graficaContainer">
+
+        <canvas
+            id="grafica">
+        </canvas>
+
+    </div>
+
+
+    <div
+        id="estadoGrafica"
+        class="estadoGrafica">
+
+        Preparando el plano...
+
+    </div>
+
+
+    <button
+        id="botonContinuar"
+        class="botonContinuar"
+        onclick="irPagina3()">
+
+        Continuar hacia los recuerdos →
+
+    </button>
+
+</section>
+
+
+
+<section
+    id="pagina3"
+    class="pagina">
+
+
+    <!-- LUCIÉRNAGAS -->
+
+    <canvas
+        id="luciernagas">
+    </canvas>
+
+
+    <div class="contenido3">
+
+
+        <div class="encabezado3">
+
+            <h2>
+                Nuestros recuerdos 🌻
+            </h2>
+
+            <p>
+                Un espacio para guardar
+                momentos, fotografías
+                y palabras.
+            </p>
+
+        </div>
+
+
+
+        <!-- CONTADOR -->
+
+        <div class="contador">
+
+            <h3>
+                ⏳ Nuestro tiempo
+            </h3>
+
+
+            <label for="fechaInicio">
+
+                Fecha desde la cual comienza
+                el contador:
+
+            </label>
+
+
+            <input
+                type="datetime-local"
+                id="fechaInicio">
+
+
+            <div id="cronometro">
+
+                Cargando contador...
+
+            </div>
+
+        </div>
+
+
+
+        <!-- GALERÍA -->
+
+        <div class="galeria">
+
+
+            <!-- TARJETA 1 -->
+
+            <article class="tarjeta">
+
+
+                <div class="foto">
+
+                    <span>
+                        📷 Agrega una fotografía
+                    </span>
+
+
+                    <label class="subirFoto">
+
+                        Elegir foto
+
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onchange="mostrarFoto(this)">
+
+                    </label>
+
+                </div>
+
+
+                <h3>
+                    Primer recuerdo
+                </h3>
+
+
+                <textarea
+                    placeholder=
+                    "Escribe aquí la historia, fecha o información de este momento...">
+                </textarea>
+
+            </article>
+
+
+
+            <!-- TARJETA 2 -->
+
+            <article class="tarjeta">
+
+                <div class="foto">
+
+                    <span>
+                        📷 Agrega una fotografía
+                    </span>
+
+
+                    <label class="subirFoto">
+
+                        Elegir foto
+
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onchange="mostrarFoto(this)">
+
+                    </label>
+
+                </div>
+
+
+                <h3>
+                    Segundo recuerdo
+                </h3>
+
+
+                <textarea
+                    placeholder=
+                    "Escribe aquí la información de este recuerdo...">
+                </textarea>
+
+            </article>
+
+
+
+            <!-- TARJETA 3 -->
+
+            <article class="tarjeta">
+
+                <div class="foto">
+
+                    <span>
+                        📷 Agrega una fotografía
+                    </span>
+
+
+                    <label class="subirFoto">
+
+                        Elegir foto
+
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onchange="mostrarFoto(this)">
+
+                    </label>
+
+                </div>
+
+
+                <h3>
+                    Tercer recuerdo
+                </h3>
+
+
+                <textarea
+                    placeholder=
+                    "Escribe aquí la información de este momento...">
+                </textarea>
+
+            </article>
+
+
+
+            <!-- TARJETA 4 -->
+
+            <article class="tarjeta">
+
+                <div class="foto">
+
+                    <span>
+                        📷 Agrega una fotografía
+                    </span>
+
+
+                    <label class="subirFoto">
+
+                        Elegir foto
+
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onchange="mostrarFoto(this)">
+
+                    </label>
+
+                </div>
+
+
+                <h3>
+                    Cuarto recuerdo
+                </h3>
+
+
+                <textarea
+                    placeholder=
+                    "Escribe aquí la información de este momento...">
+                </textarea>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+
+const pagina1 =
+    document.getElementById("pagina1");
+
+const pagina2 =
+    document.getElementById("pagina2");
+
+const pagina3 =
+    document.getElementById("pagina3");
+
+
+const sobre =
+    document.getElementById("sobre");
+
+
+let cartaAbierta=false;
+
+
+
+function cambiarPagina(
+    actual,
+    siguiente
+){
+
+    actual.classList.remove(
+        "activa"
+    );
+
+    actual.classList.add(
+        "saliendo"
+    );
+
+
+    siguiente.classList.add(
+        "activa"
+    );
+
+
+
+    setTimeout(()=>{
+
+        actual.classList.remove(
+            "saliendo"
+        );
+
+    },1400);
+
+}
+
+
+
+function abrirCarta(){
+
+    if(cartaAbierta)
+        return;
+
+
+    cartaAbierta=true;
+
+
+    sobre.classList.add(
+        "abierta"
+    );
+
+
+    setTimeout(()=>{
+
+        cambiarPagina(
+            pagina1,
+            pagina2
+        );
+
+
+        iniciarGirasol();
+
+    },2400);
+
+}
+
+
+const canvas =
+    document.getElementById(
+        "grafica"
+    );
+
+const ctx =
+    canvas.getContext("2d");
+
+
+const estadoGrafica =
+    document.getElementById(
+        "estadoGrafica"
+    );
+
+
+const botonContinuar =
+    document.getElementById(
+        "botonContinuar"
+    );
+
+
+let ancho=0;
+let alto=0;
+
+
+function ajustarCanvas(){
+
+    const tamaño=
+        Math.min(
+            window.innerWidth*.82,
+            760
+        );
+
+
+    canvas.width=
+        Math.max(
+            300,
+            tamaño
+        );
+
+
+    canvas.height=
+        Math.max(
+            300,
+            tamaño
+        );
+
+
+    ancho=
+        canvas.width;
+
+    alto=
+        canvas.height;
+
+}
+
+
+ajustarCanvas();
+
+
+window.addEventListener(
+    "resize",
+    ()=>{
+
+        ajustarCanvas();
+
+        if(
+            graficaTerminada
+        ){
+
+            dibujarGirasolCompleto();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   TRANSFORMACIÓN DE COORDENADAS
+   -----------------------------------------------------
+   Las ecuaciones trabajan en coordenadas matemáticas
+   (el origen (0,0) está en el centro y "y" crece hacia
+   arriba). El canvas, en cambio, usa píxeles con el
+   origen arriba a la izquierda y "y" creciendo hacia
+   abajo. Esta función convierte de un sistema al otro.
+   ===================================================== */
+
+function transformar(x,y){
+
+    // Píxeles que ocupa 1 unidad matemática.
+    // El plano abarca de -RANGO a +RANGO (2*RANGO unidades).
+    const escala=
+        Math.min(
+            ancho,
+            alto
+        )/(2*RANGO);
+
+    return {
+
+        // x: se desplaza al centro del canvas y se escala
+        x:
+            ancho/2+
+            x*escala,
+
+        // y: se RESTA porque en el canvas "y" crece hacia abajo
+        y:
+            alto/2-
+            y*escala
+
+    };
+
+}
+
+/* =====================================================
+   PLANO CARTESIANO
+   Dibuja el fondo, la cuadrícula, los ejes, sus flechas
+   y los números de las marcas. Se llama en cada cuadro
+   de la animación para "limpiar" y empezar de nuevo.
+   ===================================================== */
+
+function dibujarPlano(){
+
+    // Borra el cuadro anterior y pinta el fondo claro
+    ctx.clearRect(0,0,ancho,alto);
+
+    ctx.fillStyle="#fffef7";
+    ctx.fillRect(0,0,ancho,alto);
+
+    // --- Cuadrícula: una línea por cada unidad entera ---
+    ctx.strokeStyle="rgba(70,70,70,.14)";
+    ctx.lineWidth=1;
+
+    for(let i=-RANGO;i<=RANGO;i++){
+
+        // Línea vertical en x = i
+        const v1=transformar(i,-RANGO);
+        const v2=transformar(i,RANGO);
+
+        ctx.beginPath();
+        ctx.moveTo(v1.x,v1.y);
+        ctx.lineTo(v2.x,v2.y);
+        ctx.stroke();
+
+        // Línea horizontal en y = i
+        const h1=transformar(-RANGO,i);
+        const h2=transformar(RANGO,i);
+
+        ctx.beginPath();
+        ctx.moveTo(h1.x,h1.y);
+        ctx.lineTo(h2.x,h2.y);
+        ctx.stroke();
+
+    }
+
+    // --- Eje X (más oscuro y grueso que la cuadrícula) ---
+    const x1=transformar(-RANGO,0);
+    const x2=transformar(RANGO,0);
+
+    ctx.beginPath();
+    ctx.moveTo(x1.x,x1.y);
+    ctx.lineTo(x2.x,x2.y);
+    ctx.strokeStyle="rgba(30,30,30,.62)";
+    ctx.lineWidth=2;
+    ctx.stroke();
+
+    // --- Eje Y (conserva el mismo estilo del eje X) ---
+    const y1=transformar(0,-RANGO);
+    const y2=transformar(0,RANGO);
+
+    ctx.beginPath();
+    ctx.moveTo(y1.x,y1.y);
+    ctx.lineTo(y2.x,y2.y);
+    ctx.stroke();
+
+    // Flechas al final de cada eje
+    dibujarFlecha(x2.x,x2.y,"derecha");
+    dibujarFlecha(y2.x,y2.y,"arriba");
+
+    // --- Números de las marcas: -8, -4, 4, 8 (se omite el 0) ---
+    ctx.fillStyle="#555";
+    ctx.font="12px Arial";
+
+    for(let i=-8;i<=8;i+=4){
+
+        if(i===0)
+            continue;
+
+        const px=transformar(i,0);
+        ctx.fillText(i,px.x-7,px.y+17);
+
+        const py=transformar(0,i);
+        ctx.fillText(i,py.x+7,py.y+4);
+
+    }
+
+    // Nombres de los ejes
+    ctx.font="bold 14px Arial";
+    ctx.fillText("X",x2.x-20,x2.y-10);
+    ctx.fillText("Y",y2.x+10,y2.y+15);
+
+    // Punto en el origen (0,0)
+    const origen=transformar(0,0);
+
+    ctx.beginPath();
+    ctx.arc(origen.x,origen.y,4,0,Math.PI*2);
+    ctx.fillStyle="#333";
+    ctx.fill();
+
+}
+
+function dibujarFlecha(
+    x,
+    y,
+    direccion
+){
+
+    ctx.save();
+
+    ctx.fillStyle=
+        "rgba(30,30,30,.65)";
+
+    ctx.beginPath();
+
+
+    if(
+        direccion==="derecha"
+    ){
+
+        ctx.moveTo(x,y);
+        ctx.lineTo(x-10,y-5);
+        ctx.lineTo(x-10,y+5);
+
+    }else{
+
+        ctx.moveTo(x,y);
+        ctx.lineTo(x-5,y+10);
+        ctx.lineTo(x+5,y+10);
+
+    }
+
+
+    ctx.closePath();
+
+    ctx.fill();
+
+    ctx.restore();
+
+}
+
+
+/* =====================================================
+   GIRASOL MATEMÁTICO
+   -----------------------------------------------------
+   Cada parte de la flor sale de una ecuación:
+
+   Tallo:              x = 0.4 sin(0.8(y − 2)),  −7.5 ≤ y ≤ 0
+   Hojas:              r = 2.0 cos(3(θ − α))
+   Pétalos:            r = 4.5 |cos(4θ)|
+   Pétalos exteriores: r = 3.2 |sin(4θ)|
+   Centro:             x² + (y − 2)² = 1.2²
+   Semillas:           r = 0.12 √n,  θ = n · 137.5°
+
+   Las ecuaciones con "r" y "θ" están en COORDENADAS
+   POLARES: r es la distancia al centro y θ el ángulo.
+   Para pasarlas al plano se usa:
+        x = r·cos(θ)      y = r·sin(θ)
+   ===================================================== */
+
+
+/* ---------- Constantes de la flor ---------- */
+
+// El plano muestra desde -11 hasta +11 en ambos ejes
+const RANGO=11;
+
+// La flor está centrada en (0, 2), por eso en el centro
+// aparece "y − 2" en las ecuaciones
+const CENTRO_FLOR={x:0,y:2};
+
+// Radio del círculo central (x² + (y−2)² = 1.2²)
+const RADIO_CENTRO=1.2;
+
+// Largo máximo de los pétalos principales y de los exteriores
+const R_PETALO=4.5;
+const R_PETALO_EXT=3.2;
+
+// Cantidad de semillas del centro. Con 90 la última queda
+// a 0.12·√90 ≈ 1.14 unidades, justo dentro del círculo.
+const TOTAL_SEMILLAS=90;
+
+// Ángulo áureo: 137.5° pasado a radianes. Girar este ángulo
+// en cada semilla evita que se alineen y llena el centro
+// de forma pareja, como en los girasoles reales.
+const ANGULO_AUREO=
+    137.5077*
+    Math.PI/180;
+
+// El tallo se dibuja entre y = 0 y y = -7.5
+const TALLO_Y_MIN=-7.5;
+const TALLO_Y_MAX=0;
+
+// Cada hoja nace en una altura "y" del tallo y apunta hacia
+// el ángulo alfa (en radianes): 0.45 ≈ 26° (arriba a la
+// derecha) y π+0.35 ≈ 200° (abajo a la izquierda).
+const HOJAS=[
+    {y:-4.0,alfa:0.45},
+    {y:-5.6,alfa:Math.PI+0.35}
+];
+
+// Colores del tallo y las hojas
+const COLOR_VERDE="#2f9488";
+const COLOR_VERDE_OSCURO="#1f6b62";
+
+
+/* ---------- Funciones de apoyo ---------- */
+
+// Cuántos píxeles mide 1 unidad matemática (mismo cálculo
+// que en transformar). Sirve para dar tamaños en píxeles
+// que se adapten al tamaño del canvas.
+function escalaPx(){
+
+    return Math.min(
+        ancho,
+        alto
+    )/(2*RANGO);
+
+}
+
+// Ecuación del tallo: da la posición horizontal "x" para
+// una altura "y". El seno hace que se curve suavemente.
+function xTallo(y){
+
+    return 0.4*Math.sin(
+        0.8*(y-2)
+    );
+
+}
+
+
+/* ---------- Pétalos (curvas rosa) ---------- */
+
+// Una "curva rosa" es r = a·cos(k·θ). Con k = 4 salen
+// 8 pétalos (el valor absoluto evita radios negativos y
+// hace que los 8 lóbulos sean iguales).
+
+// Pétalos principales: apuntan a 0°, 45°, 90°...
+function radioPetalo(theta){
+
+    return R_PETALO*
+        Math.abs(
+            Math.cos(4*theta)
+        );
+
+}
+
+// Pétalos exteriores: usan seno en vez de coseno, así que
+// quedan girados 22.5° y asoman entre los principales.
+function radioPetaloExt(theta){
+
+    return R_PETALO_EXT*
+        Math.abs(
+            Math.sin(4*theta)
+        );
+
+}
+
+// Dibuja una curva rosa de forma progresiva.
+//   radioFn  : función r(θ) de la curva
+//   progreso : de 0 a 1, qué tanto del recorrido (0° a 360°)
+//              se ha dibujado
+//   relleno  : color de relleno
+//   borde    : color del contorno
+function dibujarRosa(
+    radioFn,
+    progreso,
+    relleno,
+    borde
+){
+
+    if(progreso<=0)
+        return;
+
+    // Se divide la vuelta completa en 720 pasos (cada 0.5°)
+    const pasos=720;
+
+    // Cuántos pasos corresponden al progreso actual
+    const limite=
+        Math.floor(
+            pasos*progreso
+        );
+
+    if(limite<2)
+        return;
+
+    // Se calculan los puntos de la curva ya convertidos a píxeles
+    const puntos=[];
+
+    for(let i=0;i<=limite;i++){
+
+        // Ángulo de este paso
+        const th=
+            Math.PI*2*i/pasos;
+
+        // Radio de la curva en ese ángulo
+        const r=radioFn(th);
+
+        // De polares a cartesianas, sumando el centro de la flor
+        puntos.push(
+            transformar(
+                CENTRO_FLOR.x+
+                r*Math.cos(th),
+                CENTRO_FLOR.y+
+                r*Math.sin(th)
+            )
+        );
+
+    }
+
+    // Centro de la flor en píxeles
+    const c=
+        transformar(
+            CENTRO_FLOR.x,
+            CENTRO_FLOR.y
+        );
+
+    // --- RELLENO ---
+    // La figura parte del centro, recorre la curva y vuelve al
+    // centro. Así el color se "barre" como un radar mientras
+    // la curva se traza.
+    ctx.beginPath();
+    ctx.moveTo(c.x,c.y);
+
+    puntos.forEach(
+        p=>ctx.lineTo(p.x,p.y)
+    );
+
+    ctx.closePath();
+    ctx.fillStyle=relleno;
+    ctx.fill();
+
+    // --- CONTORNO ---
+    // Se dibuja en un trazo aparte, solo con la curva, para que
+    // no queden líneas rectas desde el centro hasta el borde.
+    ctx.beginPath();
+
+    puntos.forEach(
+        (p,i)=>{
+
+            if(i===0)
+                ctx.moveTo(p.x,p.y);
+            else
+                ctx.lineTo(p.x,p.y);
+
+        }
+    );
+
+    ctx.strokeStyle=borde;
+    ctx.lineWidth=2;
+    ctx.lineJoin="round";
+    ctx.lineCap="round";
+    ctx.stroke();
+
+}
+
+
+/* ---------- Centro y semillas ---------- */
+
+// Círculo central: x² + (y − 2)² = 1.2²
+// El progreso (0 a 1) hace que el círculo crezca desde un punto.
+function dibujarCentro(progreso){
+
+    if(progreso<=0)
+        return;
+
+    const c=
+        transformar(
+            CENTRO_FLOR.x,
+            CENTRO_FLOR.y
+        );
+
+    ctx.beginPath();
+
+    ctx.arc(
+        c.x,
+        c.y,
+        escalaPx()*
+        RADIO_CENTRO*
+        progreso,       // radio en píxeles
+        0,
+        Math.PI*2
+    );
+
+    ctx.fillStyle="#5c3d52";
+    ctx.fill();
+
+    ctx.strokeStyle="#3a2433";
+    ctx.lineWidth=2;
+    ctx.stroke();
+
+}
+
+// Semillas en espiral áurea (espiral de Vogel).
+// La semilla número n va en:
+//   ángulo = n · 137.5°
+//   radio  = 0.12 · √n
+// La raíz cuadrada reparte las semillas con densidad pareja.
+function dibujarSemillas(progreso){
+
+    // Cuántas semillas se han "plantado" según el progreso
+    const cantidad=
+        Math.floor(
+            TOTAL_SEMILLAS*
+            progreso
+        );
+
+    for(let n=1;n<=cantidad;n++){
+
+        const ang=n*ANGULO_AUREO;
+
+        const r=0.12*Math.sqrt(n);
+
+        const p=
+            transformar(
+                CENTRO_FLOR.x+
+                r*Math.cos(ang),
+                CENTRO_FLOR.y+
+                r*Math.sin(ang)
+            );
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            // Tamaño proporcional al canvas, con mínimo de 1.2 px
+            Math.max(
+                1.2,
+                escalaPx()*.055
+            ),
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle="#dcc09a";
+        ctx.fill();
+
+    }
+
+}
+
+
+/* ---------- Tallo y hojas ---------- */
+
+// Dibuja el tallo de arriba hacia abajo siguiendo xTallo(y).
+// El progreso (0 a 1) controla hasta qué altura ha crecido.
+function dibujarTallo(progreso){
+
+    if(progreso<=0)
+        return;
+
+    const pasos=80;
+
+    const limite=
+        Math.floor(
+            pasos*progreso
+        );
+
+    if(limite<1)
+        return;
+
+    ctx.beginPath();
+
+    for(let i=0;i<=limite;i++){
+
+        // Se recorre y desde 0 hasta -7.5 en 80 pasos
+        const y=
+            TALLO_Y_MAX+
+            (TALLO_Y_MIN-TALLO_Y_MAX)*
+            (i/pasos);
+
+        const p=
+            transformar(
+                xTallo(y),
+                y
+            );
+
+        if(i===0)
+            ctx.moveTo(p.x,p.y);
+        else
+            ctx.lineTo(p.x,p.y);
+
+    }
+
+    ctx.strokeStyle=COLOR_VERDE;
+
+    // Grosor proporcional al canvas, con mínimo de 3 px
+    ctx.lineWidth=
+        Math.max(
+            3,
+            escalaPx()*.24
+        );
+    ctx.lineCap="round";
+    ctx.lineJoin="round";
+    ctx.stroke();
+
+}
+
+// Dibuja una hoja con un solo lóbulo de la curva
+// r = 2.0·cos(3(θ − α)).
+//   hoja     : objeto de HOJAS con la altura "y" y el ángulo alfa
+//   progreso : de 0 a 1, qué tan crecida está la hoja
+function dibujarHoja(
+    hoja,
+    progreso
+){
+
+    if(progreso<=0)
+        return;
+
+    // La hoja nace sobre el tallo, a la altura indicada
+    const base={
+        x:xTallo(hoja.y),
+        y:hoja.y
+    };
+
+    const pasos=48;
+
+    const puntos=[];
+
+    for(let i=0;i<=pasos;i++){
+
+        // fi recorre de -30° a +30° alrededor de la dirección alfa.
+        // En esos límites cos(3·fi) vale 0, así que la hoja empieza
+        // y termina en el punto base: eso forma un solo lóbulo.
+        const fi=
+            -Math.PI/6+
+            (Math.PI/3)*(i/pasos);
+
+        // Radio de la hoja; se multiplica por el progreso
+        // para que crezca desde la base
+        const r=
+            2.0*
+            Math.cos(3*fi)*
+            Math.min(progreso,1);
+
+        // Ángulo real = dirección de la hoja + desviación
+        const th=hoja.alfa+fi;
+
+        puntos.push(
+            transformar(
+                base.x+
+                r*Math.cos(th),
+                base.y+
+                r*Math.sin(th)
+            )
+        );
+
+    }
+
+    // Relleno y contorno de la hoja
+    ctx.beginPath();
+
+    puntos.forEach(
+        (p,i)=>{
+
+            if(i===0)
+                ctx.moveTo(p.x,p.y);
+            else
+                ctx.lineTo(p.x,p.y);
+
+        }
+    );
+
+    ctx.closePath();
+
+    ctx.fillStyle=COLOR_VERDE;
+    ctx.fill();
+
+    ctx.strokeStyle=COLOR_VERDE_OSCURO;
+    ctx.lineWidth=1.8;
+    ctx.stroke();
+
+    // --- Nervadura central: de la base a la punta ---
+    const b=
+        transformar(
+            base.x,
+            base.y
+        );
+
+    // La punta es el punto del medio (fi = 0, radio máximo)
+    const punta=
+        puntos[pasos/2];
+
+    ctx.beginPath();
+    ctx.moveTo(b.x,b.y);
+    ctx.lineTo(punta.x,punta.y);
+    ctx.strokeStyle="rgba(255,255,255,.35)";
+    ctx.lineWidth=1.3;
+    ctx.stroke();
+
+}
+
+
+/* ---------- Escena completa ---------- */
+
+// Variables de estado de la animación
+let tiempoGrafica=0;          // "reloj" interno de la animación
+let animandoGrafica=false;    // true mientras la animación corre
+let graficaTerminada=false;   // true cuando ya terminó (habilita el botón)
+
+// Dibuja TODO el girasol en un solo cuadro.
+// Recibe un objeto "p" con el progreso (0 a 1) de cada parte:
+//   tallo, hoja1, hoja2, ext, pet, centro, semillas
+// El orden importa: lo que se dibuja después queda encima.
+// Por eso el tallo va primero (los pétalos lo tapan) y las
+// semillas al final (quedan sobre el centro).
+function dibujarEscena(p){
+
+    dibujarPlano();
+
+    dibujarTallo(p.tallo);
+
+    dibujarHoja(HOJAS[0],p.hoja1);
+
+    dibujarHoja(HOJAS[1],p.hoja2);
+
+    // Pétalos exteriores (más claros, quedan detrás)
+    dibujarRosa(
+        radioPetaloExt,
+        p.ext,
+        "#f4d98a",
+        "#d9aa3c"
+    );
+
+    // Pétalos principales (más oscuros, quedan al frente)
+    dibujarRosa(
+        radioPetalo,
+        p.pet,
+        "#e6b94a",
+        "#c9941a"
+    );
+
+    dibujarCentro(p.centro);
+
+    dibujarSemillas(p.semillas);
+
+}
+
+// Dibuja el girasol ya terminado (todo al 100 %).
+// Se usa al final de la animación y al cambiar el tamaño de la ventana.
+function dibujarGirasolCompleto(){
+
+    dibujarEscena({
+        tallo:1,
+        hoja1:1,
+        hoja2:1,
+        ext:1,
+        pet:1,
+        centro:1,
+        semillas:1
+    });
+
+}
+
+// Convierte el tiempo "t" en un progreso de 0 a 1 para una etapa
+// que empieza en "inicio" y dura "duracion".
+//   antes de "inicio"          -> 0
+//   entre inicio y inicio+dur  -> va subiendo de 0 a 1
+//   después                    -> 1
+function avance(t,inicio,duracion){
+
+    return Math.max(
+        0,
+        Math.min(
+            (t-inicio)/duracion,
+            1
+        )
+    );
+
+}
+
+
+/* ---------- Animación ---------- */
+
+function iniciarGirasol(){
+
+    // Reinicia el estado
+    tiempoGrafica=0;
+
+    animandoGrafica=true;
+
+    graficaTerminada=false;
+
+    botonContinuar.classList.remove(
+        "visible"
+    );
+
+    // Se ejecuta una vez por cada cuadro (~60 veces por segundo)
+    function animar(){
+
+        if(!animandoGrafica)
+            return;
+
+        // Avanza el reloj interno
+        tiempoGrafica+=.008;
+
+        const t=tiempoGrafica;
+
+        // Momento en que empieza cada etapa
+        const inicioPetalos=.25;
+        const inicioSemillas=3.05;
+        const inicioTallo=5.35;
+        const final=inicioTallo+1.7;
+
+        // Línea de tiempo:
+        //  1) pétalos exteriores  (1.4 de duración)
+        //  2) pétalos principales (1.4, justo después)
+        //  3) centro y semillas
+        //  4) tallo, y las hojas cuando el tallo ya va avanzado
+        dibujarEscena({
+            ext:avance(t,inicioPetalos,1.4),
+            pet:avance(t,inicioPetalos+1.4,1.4),
+            centro:avance(t,inicioSemillas,.6),
+            semillas:avance(t,inicioSemillas,2.3),
+            tallo:avance(t,inicioTallo,1.4),
+            hoja1:avance(t,inicioTallo+1.4*.55,1.4*.45),
+            hoja2:avance(t,inicioTallo+1.4*.72,1.4*.28)
+        });
+
+        // Mensaje de estado según la etapa actual
+        if(t<inicioPetalos+.1)
+            estadoGrafica.textContent=
+                "Preparando el plano cartesiano...";
+        else if(t<inicioPetalos+1.4)
+            estadoGrafica.textContent=
+                "Trazando los pétalos exteriores...";
+        else if(t<inicioSemillas)
+            estadoGrafica.textContent=
+                "Trazando los pétalos...";
+        else if(t<inicioTallo)
+            estadoGrafica.textContent=
+                "Formando el centro con una espiral áurea...";
+        else
+            estadoGrafica.textContent=
+                "Dibujando el tallo y las hojas...";
+
+        // Fin de la animación
+        if(t>=final){
+
+            dibujarGirasolCompleto();
+
+            estadoGrafica.textContent=
+                "Girasol terminado 🌻";
+
+            graficaTerminada=true;
+
+            animandoGrafica=false;
+
+            // Muestra el botón "Continuar" medio segundo después
+            setTimeout(()=>{
+
+                botonContinuar.classList.add(
+                    "visible"
+                );
+
+            },500);
+
+            return;
+
+        }
+
+        // Pide el siguiente cuadro al navegador
+        requestAnimationFrame(
+            animar
+        );
+
+    }
+
+    // Arranca el primer cuadro
+    animar();
+
+}
+
+const fireCanvas =
+    document.getElementById(
+        "luciernagas"
+    );
+
+const fireCtx =
+    fireCanvas.getContext(
+        "2d"
+    );
+
+
+let luciernagas=[];
+
+let animacionLuciernagas=false;
+
+let ultimoTiempoLuci=0;
+
+
+function ajustarLuciernagas(){
+
+    const dpr=
+        window.devicePixelRatio ||
+        1;
+
+
+    fireCanvas.width=
+        window.innerWidth*
+        dpr;
+
+
+    fireCanvas.height=
+        window.innerHeight*
+        dpr;
+
+
+    fireCanvas.style.width=
+        window.innerWidth+
+        "px";
+
+
+    fireCanvas.style.height=
+        window.innerHeight+
+        "px";
+
+
+    fireCtx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+}
+
+
+ajustarLuciernagas();
+
+
+window.addEventListener(
+    "resize",
+    ajustarLuciernagas
+);
+
+
+
+function crearLuciernagas(){
+
+    luciernagas=[];
+
+
+    const cantidad=
+        Math.min(
+            42,
+            Math.max(
+                22,
+                Math.floor(
+                    window.innerWidth/32
+                )
+            )
+        );
+
+
+    for(
+        let i=0;
+        i<cantidad;
+        i++
+    ){
+
+        luciernagas.push({
+
+            x:
+                Math.random()*
+                window.innerWidth,
+
+            y:
+                Math.random()*
+                window.innerHeight,
+
+            radio:
+                1.1+
+                Math.random()*2.1,
+
+            velocidad:
+                7+
+                Math.random()*16,
+
+            amplitud:
+                5+
+                Math.random()*14,
+
+            frecuencia:
+                .0007+
+                Math.random()*.001,
+
+            fase:
+                Math.random()*
+                Math.PI*2,
+
+            brillo:
+                .35+
+                Math.random()*.65
+
+        });
+
+    }
+
+}
+
+
+function animarLuciernagas(
+    tiempo
+){
+
+    if(!animacionLuciernagas)
+        return;
+
+
+
+    if(!ultimoTiempoLuci)
+        ultimoTiempoLuci=tiempo;
+
+
+    const delta=
+        Math.min(
+            tiempo-
+            ultimoTiempoLuci,
+            40
+        );
+
+
+    ultimoTiempoLuci=
+        tiempo;
+
+
+    fireCtx.clearRect(
+        0,
+        0,
+        window.innerWidth,
+        window.innerHeight
+    );
+
+
+    luciernagas.forEach(
+        f=>{
+
+            f.y-=
+                f.velocidad*
+                delta/
+                1000;
+
+
+            f.x+=
+                Math.sin(
+                    tiempo*
+                    f.frecuencia+
+                    f.fase
+                )*
+                f.amplitud*
+                delta/
+                1000;
+
+            if(
+                f.y<
+                -15
+            ){
+
+                f.y=
+                    window.innerHeight+
+                    15;
+
+                f.x=
+                    Math.random()*
+                    window.innerWidth;
+
+            }
+
+
+
+            if(
+                f.x<
+                -20
+            )
+                f.x=
+                    window.innerWidth+20;
+
+
+            if(
+                f.x>
+                window.innerWidth+20
+            )
+                f.x=-20;
+
+
+            const pulsacion=
+                (
+                    Math.sin(
+                        tiempo*
+                        .0025+
+                        f.fase
+                    )+
+                    1
+                )/
+                2;
+
+
+            const alpha=
+                .20+
+                pulsacion*
+                .65*
+                f.brillo;
+
+
+
+            fireCtx.beginPath();
+
+
+            fireCtx.arc(
+                f.x,
+                f.y,
+                f.radio*
+                5,
+                0,
+                Math.PI*2
+            );
+
+
+            fireCtx.fillStyle=
+                `rgba(
+                    255,
+                    220,
+                    70,
+                    ${alpha*.10}
+                )`;
+
+
+            fireCtx.fill();
+
+
+            fireCtx.beginPath();
+
+
+            fireCtx.arc(
+                f.x,
+                f.y,
+                f.radio,
+                0,
+                Math.PI*2
+            );
+
+
+            fireCtx.fillStyle=
+                `rgba(
+                    255,
+                    218,
+                    70,
+                    ${alpha}
+                )`;
+
+
+            fireCtx.shadowColor=
+                "rgba(255,214,60,.75)";
+
+
+            fireCtx.shadowBlur=
+                5+
+                pulsacion*8;
+
+
+            fireCtx.fill();
+
+
+            fireCtx.shadowBlur=0;
+
+        }
+    );
+
+
+    requestAnimationFrame(
+        animarLuciernagas
+    );
+
+}
+
+
+function iniciarLuciernagas(){
+
+
+    if(
+        animacionLuciernagas
+    )
+        return;
+
+
+    crearLuciernagas();
+
+
+    animacionLuciernagas=true;
+
+    ultimoTiempoLuci=0;
+
+
+    requestAnimationFrame(
+        animarLuciernagas
+    );
+
+}
+
+
+const FECHA_INICIO=
+    "2025-03-15T18:30:00";
+
+
+const campoFecha=
+    document.getElementById(
+        "fechaInicio"
+    );
+
+
+const cronometro=
+    document.getElementById(
+        "cronometro"
+    );
+
+
+
+campoFecha.value=
+    FECHA_INICIO;
+
+
+
+let intervaloContador=null;
+
+
+function actualizarContador(){
+
+    const valor=
+        campoFecha.value;
+
+
+    if(!valor){
+
+        cronometro.textContent=
+            "Selecciona una fecha.";
+
+        return;
+
+    }
+
+
+    const inicio=
+        new Date(valor);
+
+
+    const ahora=
+        new Date();
+
+
+    const diferencia=
+        ahora-
+        inicio;
+
+
+    if(
+        diferencia<0
+    ){
+
+        cronometro.textContent=
+            "El momento elegido todavía no ha llegado.";
+
+        return;
+
+    }
+
+
+
+    const segundosTotales=
+        Math.floor(
+            diferencia/1000
+        );
+
+
+    const dias=
+        Math.floor(
+            segundosTotales/
+            86400
+        );
+
+
+    const horas=
+        Math.floor(
+            (
+                segundosTotales%
+                86400
+            )/
+            3600
+        );
+
+
+    const minutos=
+        Math.floor(
+            (
+                segundosTotales%
+                3600
+            )/
+            60
+        );
+
+
+    const segundos=
+        segundosTotales%
+        60;
+
+
+    let años=
+        ahora.getFullYear()-
+        inicio.getFullYear();
+
+
+    let meses=
+        ahora.getMonth()-
+        inicio.getMonth();
+
+
+    if(
+        ahora.getDate()<
+        inicio.getDate()
+    ){
+
+        meses--;
+
+    }
+
+
+    if(
+        meses<0
+    ){
+
+        años--;
+
+        meses+=12;
+
+    }
+
+    cronometro.textContent=
+
+        `${años} años · `+
+        `${meses} meses · `+
+        `${dias} días · `+
+        `${String(horas).padStart(2,"0")} h · `+
+        `${String(minutos).padStart(2,"0")} min · `+
+        `${String(segundos).padStart(2,"0")} s`;
+
+}
+
+
+function iniciarContador(){
+
+    actualizarContador();
+
+    if(
+        intervaloContador!==null
+    )
+        return;
+
+
+    intervaloContador=
+        setInterval(
+            actualizarContador,
+            1000
+        );
+
+}
+
+
+campoFecha.addEventListener(
+    "change",
+    actualizarContador
+);
+
+
+function mostrarFoto(input){
+
+    if(
+        !input.files ||
+        !input.files[0]
+    )
+        return;
+
+
+    const archivo=
+        input.files[0];
+
+
+    if(
+        !archivo.type.startsWith(
+            "image/"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    const lector=
+        new FileReader();
+
+
+    lector.onload=
+        function(event){
+
+            const contenedor=
+                input.closest(
+                    ".foto"
+                );
+
+
+            /*
+                Quitamos texto
+                de marcador.
+            */
+
+            const marcador=
+                contenedor.querySelector(
+                    "span"
+                );
+
+
+            if(marcador)
+                marcador.style.display=
+                    "none";
+
+            let imagen=
+                contenedor.querySelector(
+                    "img"
+                );
+
+
+            if(!imagen){
+
+                imagen=
+                    document.createElement(
+                        "img"
+                    );
+
+                contenedor.prepend(
+                    imagen
+                );
+
+            }
+
+
+            imagen.src=
+                event.target.result;
+
+        };
+
+
+    lector.readAsDataURL(
+        archivo
+    );
+
+}
+
+
+function irPagina3(){
+
+    if(
+        !graficaTerminada
+    )
+        return;
+
+
+    cambiarPagina(
+        pagina2,
+        pagina3
+    );
+
+
+    setTimeout(
+        iniciarLuciernagas,
+        500
+    );
+
+
+    iniciarContador();
+
+}
+
+</script>
+
+</body>
+</html>
